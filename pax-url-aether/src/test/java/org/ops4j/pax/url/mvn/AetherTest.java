@@ -80,7 +80,7 @@ public class AetherTest {
         centralProfile.setId( "central" );
         Repository central = new Repository();
         central.setId( "central" );
-        central.setUrl( "http://repo1.maven.org/maven2");
+        central.setUrl( "https://repo1.maven.org/maven2");
         centralProfile.addRepository( central );
         settings.addProfile( centralProfile );
         settings.addActiveProfile( "central" );
@@ -89,6 +89,8 @@ public class AetherTest {
     
     private MavenConfigurationImpl getConfig() {
         Properties p = new Properties();
+        p.put( "maven.wagon.http.ssl.insecure", "true" );
+        p.put( "maven.wagon.http.ssl.allowall", "true" );
         MavenConfigurationImpl config = new MavenConfigurationImpl( new PropertiesPropertyResolver( p ), ServiceConstants.PID );
         config.setSettings( getSettings() );
         return config;        
@@ -118,7 +120,7 @@ public class AetherTest {
         jbossProfile.setId( "jboss" );
         Repository jbossRepository = new Repository();
         jbossRepository.setId( "jboss" );
-        jbossRepository.setUrl( "http://repository.jboss.org/nexus/content/repositories/thirdparty-releases");
+        jbossRepository.setUrl( "https://repository.jboss.org/nexus/content/repositories/thirdparty-releases");
         jbossProfile.addRepository( jbossRepository );
         settings.addProfile( jbossProfile );
         settings.addActiveProfile( "jboss" );

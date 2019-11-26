@@ -63,6 +63,9 @@ public class AetherTest extends TestBase
             RepositoryPolicy.CHECKSUM_POLICY_IGNORE //
             );
 
+        props.put( "maven.wagon.http.ssl.insecure", "true" );
+        props.put( "maven.wagon.http.ssl.allowall", "true" );
+
         File file = Util.getTestSettings();
 
         return UnitHelp.getConfig( file, props );
